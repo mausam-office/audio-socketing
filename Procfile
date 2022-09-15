@@ -1,1 +1,1 @@
-web: gunicorn AudioAppMain.asgi --log-file -
+web: gunicorn AudioAppMain.wsgi --log-file -
