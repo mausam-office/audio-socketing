@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-+^)7unx3%i+(b)7d(gjh0(pf*kzkyg4zm8&qq$wwdj=tx^%fw@
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'audio-socketing.herokuapp.com']  # for Heroku
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'audio-socketing.herokuapp.com']  # for Heroku
 # ALLOWED_HOSTS = []
 
 
@@ -80,7 +80,8 @@ CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels_redis.core.RedisChannelLayer",
         "CONFIG": {
-            "hosts": [("localhost", 6379)],
+            # "hosts": [("localhost", 6379)],
+            "hosts":[os.environ.get('REDIS_URL', 'redis://localhost:6379')]
         },
     },
 }
